@@ -16,4 +16,14 @@
  - Used to Start up multiple docker containers at the same time
  - Automates some of the long-winded arguments we were passing to **'docker-run'**
 
-**
+**Sample Docker-Compose.yml file
+
+    version: '3'    
+	    services:    
+		    redis-server:    
+			    image: 'redis'    
+		    node-app:    
+			    build: .    
+			    ports:    
+				    - "8080:8080"
+
