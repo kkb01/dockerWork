@@ -1,4 +1,4 @@
-# dockerWork
+# Docker Work
 
 ## Notes for docker
 
@@ -18,12 +18,36 @@
 
 **Sample Docker-Compose.yml file
 
-    version: '3'    
-	    services:    
-		    redis-server:    
-			    image: 'redis'    
-		    node-app:    
-			    build: .    
-			    ports:    
-				    - "8080:8080"
+```json
+version: '3'
+services: 
+  redis-server:
+    image: 'redis'
+    restart: always
+  node-app:
+    restart: always
+    build: .
+    ports:
+      - "8080:8080"
+```
+
+`docker run myimage` 
+
+**`docker-compose up`-`**
+
+    docker build .    
+    docker run myimage 
+  **`docker-compose up --build`**
+  
+**`docker ps`** :  list all the running containers
+**`docker-compose ps`** : list all the running containers associated in **`docker-compose.yml`** file. **(Must run on directory where the docker-compose.yml located)**
+Stop all the containers created by docker-compose.yml
+
+    docker-compose down
+**Docker Restart Policies:** There are four restart policies
+
+ 1. **"no"** 		: Never attempt to restart this . container if it stops or crashes.
+ 2. **"always"** : If this container stops ***for any reason*** always attempts to restart it.
+ 3. **"on-failure"**	: Only restarts if container stops with an error code.
+ 4. **"unless-stopped"**	: Always restarts unless we (*the developers*) forcibly stop it.
 
